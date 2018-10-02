@@ -6,7 +6,8 @@ public class GameManager : MonoBehaviour
 {
 
     public PlayerMovement player;
-    private Vector3 playerStartPoint;
+    public Vector3 playerStartPoint;
+    public Transform startPoint;
     public ScoreManager scoring;
     public DeathMenu mati;
     public AudioScript lagu;
@@ -14,11 +15,12 @@ public class GameManager : MonoBehaviour
    
     public GameObject hansipp;
     public GameObject platform;
-    public GameObject spawner;
+    //public GameObject spawner;
     public GameObject wall;
     public GameObject Window;
     public GameObject destroyer;
     public GameObject Pan;
+    
 
     
     public NewBehaviourScript background;
@@ -43,12 +45,13 @@ public class GameManager : MonoBehaviour
 
 	public void RestartGame()
     {
+        playerStartPoint = startPoint.position;
         scoring.scoreIncreasing = false;
         player.gameObject.SetActive(false);
         mati.gameObject.SetActive(true);
         lagu.descrease = true;
         hansipp.gameObject.SetActive(false);
-        spawner.gameObject.SetActive(false);
+        //spawner.gameObject.SetActive(false);
         destroyer.transform.position = new Vector3(0f, 0f, 0f);
         background.speed = 0f;
         obstacleMove.gerak = false;
@@ -71,7 +74,7 @@ public class GameManager : MonoBehaviour
         scoring.scoreIncreasing = true;
         mati.gameObject.SetActive(false);
         lagu.descrease = false;
-        spawner.gameObject.SetActive(true);
+        //spawner.gameObject.SetActive(true);
         hansipp.gameObject.SetActive(true);
         background.speed = 0.5f;
         destroyer.transform.position = new Vector3(-22f, 0f, 0f);
